@@ -1,0 +1,31 @@
+version: '3.4'
+services:
+  mongodb:
+    image: mongo
+    container_name: "mongodb"
+    networks:
+      - databases
+    volumes:
+      - ./_databases/mongodb/mongo-data:/data/db
+    ports:
+      -  27017:27017
+    command: mongod
+  backend:
+    container_name: "backend"
+    build:
+      context: ./backend
+    volumes:
+      - ./backend:/usr/src/backend
+      - /usr/src/backend/node_modules
+    depends_on:
+      - mongodb
+    ports:
+      - 3000:3000
+    environment:
+     WAIT_HOST: mongodb:27017
+    networks:
+      - backend
+      - databases
+networks:
+  backend:
+  databases:
