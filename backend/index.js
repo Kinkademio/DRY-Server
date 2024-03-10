@@ -11,7 +11,7 @@ const http = require('http');
 const cors=require("cors");
 const path = require('path');
 const fileupload = require('express-fileupload')
-const {routes} = require('../src/routes')
+const {routes} = require('./src/routes')
 
 
 

@@ -7,4 +7,4 @@ var schema = new Schema({
     type: String
   }
 });
-module.exports = model('ShopGoods', schema)
+module.exports = model('Media', schema)
